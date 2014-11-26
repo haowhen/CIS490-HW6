@@ -1,6 +1,8 @@
 package com.cis490.haonguyen.cis490_hw6;
 
 import android.app.Activity;
+import android.app.FragmentManager;
+import android.app.FragmentTransaction;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.Menu;
@@ -54,5 +56,23 @@ public class MainActivity extends Activity {
 		}
 
 		return super.onOptionsItemSelected(item);
+	}
+
+	public void push(View view){
+		PushFragment frag = new PushFragment();
+		FragmentManager manager = getFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.maincontainer, frag);
+		transaction.addToBackStack(null);
+		transaction.commit();
+	}
+
+	public void pushed(View view){
+		PushedFragment frag = new PushedFragment();
+		FragmentManager manager = getFragmentManager();
+		FragmentTransaction transaction = manager.beginTransaction();
+		transaction.replace(R.id.maincontainer, frag);
+		transaction.addToBackStack(null);
+		transaction.commit();
 	}
 }
